@@ -310,12 +310,10 @@ module Jazz
     possible_types Musician, Ensemble
 
     def self.resolve_type(object, context)
-      GraphQL::Execution::Lazy.new do
-        if object.is_a?(Models::Ensemble)
-          Ensemble
-        else
-          Musician
-        end
+      if object.is_a?(Models::Ensemble)
+        Ensemble
+      else
+        Musician
       end
     end
   end
